@@ -24,3 +24,16 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5; /* 半分の明るさで点滅 */
+  }
+}
+
+.animate-pulse {
+  animation: pulse 1.5s infinite; /* 1.5秒かけて無限に点滅 */
+}

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Header from '../app/components/Header';
+import Footer from '../app/components/Footer';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,11 +25,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+    <html lang="ja">
+      <body>
+        <Header /> {/* 作成したヘッダーを配置 */}
+        
+        {/* children（ページ内容）をメインタグで囲み、ヘッダーの高さ分スペースを空けます */}
+        <main style={{ paddingTop: '80px', minHeight: '100vh' }}>
+          {children}
+        </main>
+        
+        <Footer /> {/* 作成したフッターを配置 */}
       </body>
     </html>
   );
