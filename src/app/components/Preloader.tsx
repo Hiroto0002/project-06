@@ -38,16 +38,20 @@ const Preloader: React.FC<PreloaderProps> = ({ onLoaded }) => {
   }
 
   return (
-    // 画面全体を覆うコンポーネント
+    // z-[9999] が Tailwind で正しく適用されます
     <div 
       className={`fixed inset-0 z-[9999] flex items-center justify-center transition-opacity duration-700`}
-      // 高級感を出すため、背景色はCSS変数から取得
-      style={{ backgroundColor: 'var(--color-dark)', opacity: loadingState === 1 ? 0 : 1 }} 
+      // 背景色もTailwindのダークカラー（bg-gray-900）に合わせた具体的な色コードを使います
+      style={{ 
+        backgroundColor: '#121212', 
+        opacity: loadingState === 1 ? 0 : 1,
+      }} 
     >
       {/* 読み込み中のアニメーション（シンプルなテキストで高級感を演出） */}
       <h1 
-        className="text-4xl sm:text-6xl font-serif tracking-[0.5em] animate-pulse"
-        style={{ color: 'var(--color-accent)' }}
+      className="text-4xl sm:text-6xl font-serif tracking-[0.5em] animate-pulse text-amber-500"
+      // text-amber-500を追加
+      // style={{ color: 'var(--color-accent)' }} ← 不要になりました
       >
         LOADING
       </h1>
